@@ -5,6 +5,7 @@ import { Pokemon } from "@/types";
 import Link from "next/link";
 
 //id를 page에서 받아오기
+//여기가 page인디..?
 const PokemonDetailPage = async ({ params }: { params: { id: string } }) => {
   const pokemonData: Pokemon = await fetchPokemonDetail(params.id);
   console.log(pokemonData);

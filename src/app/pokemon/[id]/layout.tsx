@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Link from "next/link";
+import { fetchPokemonDetail } from "@/apis/fetchPokemonDetail";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "My Pokemons!",
-  description: "by JJQKR",
-  //metadata를 잘 쓰면 SEO에 유리하다!
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const pokemonData = await fetchPokemonDetail(params.id);
+  return {
+    title: `${pokemonData.korean_name} - Pokemon Detail`,
+    description: `Details of ${pokemonData.korean_name}`,
+  };
+}
 
-export default function RootLayout({
+export default function DetailLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -21,11 +26,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="grid justify-items-center mt-3">
           <header className="text-center pt-3 font-bold text-white w-full h-[50px] bg-[#bc11ff]">
-            나의 포켓몬 도감
+            너로 정했다!
           </header>
         </div>
         {children}
-        {/* children 없으면 안 되는 이유 구조 다시 찾아보기 */}
       </body>
     </html>
   );
