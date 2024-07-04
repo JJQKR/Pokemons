@@ -44,7 +44,10 @@ const PokemonListAnswer: React.FC = () => {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {pokemons.map((pokemon) => (
-              <div key={pokemon.id} className="pokemon p-4 border rounded-lg">
+              <div
+                key={pokemon.id}
+                className="pokemon p-4 border rounded-xl flex justify-center my-1"
+              >
                 <Link href={`/pokemon/${pokemon.id}`}>
                   <Image
                     src={pokemon.sprites.front_default}
@@ -52,7 +55,7 @@ const PokemonListAnswer: React.FC = () => {
                     width={96}
                     height={96}
                   />
-                  <p>{pokemon.korean_name}</p>
+                  <p className="text-center">{pokemon.korean_name}</p>
                   <p>도감 번호 : {pokemon.id}</p>
                 </Link>
               </div>
