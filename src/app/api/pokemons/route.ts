@@ -1,3 +1,8 @@
+// app > api > pokemons > route.ts의 경우
+// 접근 시에 "/api/pokemons"로 하게 되는데
+// app > pokemons > route.ts로 경로를 잡고
+// 접근을 "/pokemons"로 해도 된다
+
 import { NextResponse } from "next/server";
 import axios from "axios";
 
